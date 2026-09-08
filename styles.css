@@ -452,6 +452,10 @@ a {
     padding: 0 0 114px;
 }
 
+.packages-section .section-shell {
+    width: min(100%, 1280px);
+}
+
 .packages-header {
     width: min(100%, 760px);
     margin: 0 auto 44px;
@@ -478,18 +482,18 @@ a {
 
 .package-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(32px, 6vw, 72px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 44px);
 }
 
 .package-card {
     display: flex;
     min-height: 570px;
-    min-width: 440px;
+    min-width: 0;
     flex-direction: column;
     border: 1.5px solid currentColor;
     border-radius: 24px;
-    padding: 34px 44px 40px;
+    padding: 34px clamp(24px, 3vw, 44px) 40px;
     box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
 }
 
@@ -503,6 +507,12 @@ a {
     --package-accent: var(--color-blue);
     color: var(--color-blue);
     border-color: rgba(88, 174, 232, 0.5);
+}
+
+.package-card-green {
+    --package-accent: var(--color-nav-hover);
+    color: var(--color-nav-hover);
+    border-color: rgba(67, 203, 175, 0.55);
 }
 
 .package-badge {
@@ -856,6 +866,16 @@ a {
     text-align: center;
 }
 
+@media (max-width: 1120px) {
+    .package-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .package-card-green {
+        grid-column: 1 / -1;
+    }
+}
+
 @media (max-width: 760px) {
     .site-header {
         position: relative;
@@ -1085,6 +1105,10 @@ a {
 
     .package-title-row {
         margin-top: 24px;
+    }
+
+    .package-card-green {
+        grid-column: auto;
     }
 
     .package-tags {
