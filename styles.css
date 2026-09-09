@@ -1111,7 +1111,7 @@ a {
     }
 
     .package-card {
-        flex: 0 0 86vw;
+        flex: 0 0 80vw;
         min-width: 0;
         min-height: 0;
         padding: 24px 22px 28px;
