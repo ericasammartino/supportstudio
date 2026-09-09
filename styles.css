@@ -596,7 +596,7 @@ a {
     min-width: 0;
     width: min(100%, 220px);
     min-height: 42px;
-    margin: auto auto 0;
+    margin: 28px auto 0;
     padding: 10px 8px;
     font-size: 14px;
 }
