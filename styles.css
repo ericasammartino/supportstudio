@@ -1095,6 +1095,7 @@ a {
 
     .package-cards {
         display: flex;
+        align-items: stretch;
         gap: 18px;
         margin: 0 -22px;
         overflow-x: auto;
@@ -1111,10 +1112,11 @@ a {
     }
 
     .package-card {
-        flex: 0 0 80vw;
+        flex: 0 0 76vw;
         min-width: 0;
         min-height: 0;
         padding: 24px 22px 28px;
+        align-self: stretch;
         scroll-snap-align: start;
     }
 
