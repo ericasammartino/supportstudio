@@ -175,7 +175,7 @@ a {
     justify-content: center;
     min-width: 230px;
     min-height: 50px;
-    border: 2px solid var(--color-line);
+    border: 1.5px solid var(--color-line);
     border-radius: 999px;
     padding: 13px 30px;
     font-size: 15px;
@@ -198,7 +198,6 @@ a {
     border: var(--color-muted);
 }
 
-/* TODO - fix this & hover */
 .button-secondary {
     background: transparent;
     color: var(--color-ink);
@@ -206,7 +205,9 @@ a {
 
 .button-secondary:hover,
 .button-secondary:focus-visible {
-    background: var(--color-grey);
+    background: var(--color-muted);
+    color: var(--color-page);
+    border: 1.5px solid var(--color-muted);
 }
 
 .hero-art {
@@ -452,6 +453,10 @@ a {
     padding: 0 0 114px;
 }
 
+.packages-section .section-shell {
+    width: min(100%, 1280px);
+}
+
 .packages-header {
     width: min(100%, 760px);
     margin: 0 auto 44px;
@@ -478,19 +483,19 @@ a {
 
 .package-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(32px, 6vw, 72px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 44px);
 }
 
 .package-card {
     display: flex;
     min-height: 570px;
-    min-width: 440px;
+    min-width: 0;
     flex-direction: column;
     border: 1.5px solid currentColor;
     border-radius: 24px;
-    padding: 34px 44px 40px;
-    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+    padding: 34px clamp(24px, 3vw, 44px) 40px;
+    box-shadow: 0 2px 6px rgba(17, 24, 39, 0.08);
 }
 
 .package-card-red {
@@ -505,14 +510,20 @@ a {
     border-color: rgba(88, 174, 232, 0.5);
 }
 
+.package-card-green {
+    --package-accent: var(--color-nav-hover);
+    color: var(--color-nav-hover);
+    border-color: rgba(67, 203, 175, 0.55);
+}
+
 .package-badge {
     align-self: flex-start;
-    border: 1px solid var(--package-accent);
+    border: 1.5px solid var(--package-accent);
     border-radius: 999px;
-    padding: 4px 12px;
+    padding: 6px 14px;
     color: var(--color-ink);
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1;
     text-transform: uppercase;
@@ -521,7 +532,7 @@ a {
 .package-title-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     margin-top: 40px;
 }
 
@@ -551,7 +562,7 @@ a {
 
 .package-copy p {
     margin: 0;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.45;
 }
@@ -572,12 +583,10 @@ a {
     align-items: center;
     justify-content: center;
     min-height: 27px;
-    border: 1px solid var(--package-accent);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--package-accent) 8%, white);
+    background: color-mix(in srgb, var(--package-accent) 10%, white);
     color: var(--color-ink);
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 12px;
     line-height: 1.1;
     padding: 6px 10px;
     text-align: center;
@@ -587,9 +596,9 @@ a {
     min-width: 0;
     width: min(100%, 220px);
     min-height: 42px;
-    margin: auto auto 0;
-    padding: 10px 22px;
-    font-size: 11px;
+    margin: 28px auto 0;
+    padding: 10px 8px;
+    font-size: 14px;
 }
 
 .packages-note {
@@ -607,8 +616,10 @@ a {
 
 .packages-note em {
     font-family: var(--font-serif);
+    font-size: 18px;
     font-style: italic;
     font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .portfolio-section {
@@ -856,6 +867,16 @@ a {
     text-align: center;
 }
 
+@media (max-width: 1120px) {
+    .package-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .package-card-green {
+        grid-column: 1 / -1;
+    }
+}
+
 @media (max-width: 760px) {
     .site-header {
         position: relative;
@@ -1073,18 +1094,38 @@ a {
     }
 
     .package-cards {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        display: flex;
+        align-items: stretch;
+        gap: 18px;
+        margin: 0 -22px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        padding: 0 22px 12px;
+        scroll-padding-inline: 22px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .package-cards::-webkit-scrollbar {
+        display: none;
     }
 
     .package-card {
+        flex: 0 0 calc(100vw - 44px);
         min-width: 0;
         min-height: 0;
         padding: 24px 22px 28px;
+        align-self: stretch;
+        scroll-snap-align: start;
     }
 
     .package-title-row {
         margin-top: 24px;
+    }
+
+    .package-card-green {
+        grid-column: auto;
     }
 
     .package-tags {
