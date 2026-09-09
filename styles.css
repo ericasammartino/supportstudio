@@ -1094,14 +1094,28 @@ a {
     }
 
     .package-cards {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        display: flex;
+        gap: 18px;
+        margin: 0 -22px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        padding: 0 22px 12px;
+        scroll-padding-inline: 22px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .package-cards::-webkit-scrollbar {
+        display: none;
     }
 
     .package-card {
+        flex: 0 0 min(86vw, 340px);
         min-width: 0;
         min-height: 0;
         padding: 24px 22px 28px;
+        scroll-snap-align: start;
     }
 
     .package-title-row {
